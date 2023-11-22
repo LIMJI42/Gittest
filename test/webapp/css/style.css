@@ -1,0 +1,29 @@
+/* Enter your custom styles here */
+.mainImage{
+    height: 500px !important;
+    width: 1500px !important ;
+}
+.sapMSTWrapper{
+    height: 100% !important;
+}
+.sizemanage{
+    height: 100% !important;
+    width:  100% !important;
+}
+.btnCart{
+    align-items: right;
+}
+.notoSansfont{
+    font-family: 'Black Han Sans', sans-serif;
+    display: inline-block;
+}
+.font_title{
+    font-size: 25px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: bold;
+}
+.font_content{
+    font-size: 25px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-weight: bold;
+}

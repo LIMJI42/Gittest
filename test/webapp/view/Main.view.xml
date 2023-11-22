@@ -1,0 +1,134 @@
+<mvc:View xmlns:tnt="sap.tnt" xmlns:f="sap.f" controllerName="test.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	 xmlns:smartForm="sap.ui.comp.smartform"
+    >
+    <Page title="ITEMS" >
+		<!-- 슬라이드 이미지 넣기 -->
+    	<FlexBox alignItems="Start" justifyContent="Center" >
+			<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" sizeBehavior="Responsive" width="1500px" height="500px" >
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/str1.jpg"
+					frameType="TwoByOne" press="pressOnTileOne" >
+				</GenericTile>
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/str2.jpg"
+					frameType="TwoByOne" press="pressOnTileTwo">
+				</GenericTile>
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/cucum1.jpg"
+					frameType="TwoByOne" press="pressOnTileTwo">
+				</GenericTile>
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/cucum22.jpg"
+					frameType="TwoByOne" press="pressOnTileTwo">
+				</GenericTile>
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/tomato1.jpg"
+					frameType="TwoByOne" press="pressOnTileTwo">
+				</GenericTile>
+				<GenericTile class="mainImage" 
+					backgroundImage="../image/tomato2.jpg"
+					frameType="TwoByOne" press="pressOnTileTwo">
+				</GenericTile>
+			</SlideTile>
+          </FlexBox>
+
+<!--타일로 이미지 넣기 -->
+		<f:GridList
+			id="gridList"
+			headerText="상품 목록"
+			mode="None"
+			items="{ path: '/Products' }"
+			selectionChange="onSelectionChange"
+			delete="onDelete"
+			class="sapUiResponsiveContentPadding">
+			<f:customLayout>
+				<grid:GridBasicLayout gridTemplateColumns="repeat(auto-fit, minmax(8rem, 1fr))" gridGap="1rem" />
+			</f:customLayout>
+
+			<f:GridListItem>
+				<f:layoutData>
+					<grid:ResponsiveColumnItemLayoutData  columns="4" rows="1" />
+				</f:layoutData>
+				
+				<VBox height="100%" justifyContent="SpaceBetween">
+					<layoutData>
+						<FlexItemData growFactor="1" shrinkFactor="0" />
+					</layoutData>
+
+					<HBox alignItems="Center" visible="{= ${onlyImage} ? false : true }">
+						<Image class="sapUiMediumMarginTop sapUiMediumMarginBegin" src="{ProductPicUrl}" width="300px" height="200px" />
+							<!-- <smartForm:GroupElement>
+				<smartMultiInput:SmartMultiInput id="idSmartMultiInput5" textLabel="Categories/Description for /Products('1')" value="{to_Categories/Description}"/>
+			</smartForm:GroupElement> -->
+			
+
+							<Panel>
+								<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Name}" />
+								<ComboBox 
+										items="{
+										path: '/Weight' 
+									}"
+									width="100px"
+									visible="{visible}" >
+									<core:Item key="{content}" text="{content}" /> 
+								</ComboBox>
+								<l:VerticalLayout width="100%">
+									<tnt:InfoLabel class="sapUiMediumMarginBegin sapUiTinyMarginBottom" text="재고 있음" colorScheme="7"/>
+									<Text class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_desc" text="{Description}" />
+								</l:VerticalLayout>
+								
+							</Panel>
+							
+							
+							 <!-- <ObjectHeader  class="notoSansfont" title="{Name}" condensed="true" >
+								<ObjectAttribute class="notoSansfont" text="{Description}" objectBindings="visible"/>
+								</ObjectHeader>  -->
+				
+			<!-- <ComboBox
+				items="{
+					path: '/CountriesCollection',
+					sorter: { path: 'text' }
+				}">
+				<core:Item key="{key}" text="{text}" />
+			</ComboBox> -->
+		
+							<!-- </ObjectHeader> -->
+						
+						
+					</HBox>
+					<OverflowToolbar design="Solid" class="sapUiTinyMarginBottom sapUiTinyMarginEnd" style="Clear">
+						<ToolbarSpacer />
+						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press="onClick" />
+					</OverflowToolbar>
+				</VBox>
+			</f:GridListItem>
+
+			<!-- <f:GridListItem
+				detailPress="onDetailPress"
+				press="onPress"
+				counter="sap-icon://business-card"
+				highlight="{Status}"
+				type="{type}"
+				>
+				<f:layoutData>
+					<grid:ResponsiveColumnItemLayoutData  columns="4" rows="1" />
+				</f:layoutData>
+				<f:content>
+					<HBox class="sapUiSmallMargin" alignItems="Center" visible="{= ${onlyImage} ? false : true }">
+						<Image src="{ProductPicUrl}" width="300px" height="200px" class="sapUiSmallMarginEnd" />
+						
+						<VBox>
+							<Title text="{Name}" wrapping="true" />
+							<Label text="{Description}" wrapping="true" />
+						</VBox>
+					</HBox>
+				</f:content>
+			</f:GridListItem> -->
+		</f:GridList>
+     </Page>
+</mvc:View>

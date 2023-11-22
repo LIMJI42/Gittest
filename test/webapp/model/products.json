@@ -1,0 +1,48 @@
+{
+	"Products": [
+		{
+            "Description": "맛과 향의 완벽한 조합, 즐거운 딸기 놀이의 초대! 달콤함이 넘치는 특별한 순간을 경험하세요. 🍓 #싱싱한딸기 #달콤한봄 #딸기로가득한즐거운시간",
+            "Name": "딸기",
+            "ProductPicUrl": "../image/str1.jpg",
+            "visible" : true
+		},
+		{
+            "Description": "건강한 유기농 딸기의 맛과 식감을 그대로 담은 잼",
+            "Name": "딸기잼",
+            "ProductPicUrl": "../image/str2.jpg",
+            "visible" : false
+		},
+		{
+            "Description": "수분 그득 ~ 아삭한 식감이 일품인 오이",
+            "Name": "오이",
+            "ProductPicUrl": "../image/cucum1.jpg",
+            "visible" : true
+		},
+		{
+            "Description": "無방부제 無첨가제 아삭아삭 살아있는 식감의 피클",
+            "Name": "피클",
+            "ProductPicUrl": "../image/cucum22.jpg",
+            "visible" : false
+		},
+		{
+            "Description": "풍부한 과즙을 가지고 있어 언제 먹어도 맛있는 토마토 ",
+            "Name": "토마토",
+            "ProductPicUrl": "../image/tomato1.jpg",
+            "visible" : true
+		},
+		{
+            "Description": "마법의 조미료 케첩",
+            "Name": "케첩",
+            "ProductPicUrl": "../image/tomato2.jpg",
+            "visible" : false
+		}
+	],
+      "Weight": [
+            {
+                 "content" : "3kg"
+                  },
+            {
+                  "content" : "5kg"
+            }
+      ]
+}
