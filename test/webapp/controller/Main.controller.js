@@ -14,6 +14,8 @@ sap.ui.define([
                 oModel.loadData("../model/products.json");
                 this.getView().setModel(oModel);
                 // this.byId("idImage").setSrc(_rootPath + "/image/Image1.jpg");
+                var obj = this.byId("idSlide")
+                debugger;
             },
             onClick: function() {
                 sap.m.MessageToast.show("장바구니에 상품을 담았습니다.", {
