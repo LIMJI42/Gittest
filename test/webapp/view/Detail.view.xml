@@ -43,9 +43,9 @@
 									<ObjectAttribute text="This is the list of items in your shopping cart"/>
 								</attributes>
 							</ObjectHeader>
-							<List mode="Delete"
+							<!-- <List mode="Delete"
 								  id = "iDList"
-							      items="{/List2}"
+							      items="{/List}"
 							      enableBusyIndicator="true"
 							      delete="handleDelete"
 							      headerText="상품 목록">
@@ -57,7 +57,7 @@
 									info="{Price}"
 									iconDensityAware="false"
 									iconInset="false"/>
-							</List>
+							</List> -->
 						</WizardStep>
 						<WizardStep
 							id="PaymentTypeStep"
