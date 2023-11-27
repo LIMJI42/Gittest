@@ -6,10 +6,33 @@
 	xmlns:grid="sap.ui.layout.cssgrid"
 	 xmlns:smartForm="sap.ui.comp.smartform"
     >
-    <Page title="ITEMS" >
+	<IconTabBar
+		
+		id="idIconTabBar"
+		select=".onFilterSelect"
+		class="sapUiResponsiveContentPadding">
+		
+		<items>
+		    <IconTabFilter
+				icon="sap-icon://compare"
+				iconColor="Critical"
+				count="{/ProductCollectionStats/Counts/Weight/Heavy}"
+				text="장바구니"
+				key="Cart" 
+				/>
+			<IconTabFilter
+				icon="sap-icon://begin"
+				iconColor="Positive"
+				count="{/ProductCollectionStats/Counts/Weight/Ok}"
+				text="마이페이지"
+				key="Mypage" />
+			
+		</items>
+	</IconTabBar>
+    <Page showHeader="false">
 		<!-- 슬라이드 이미지 넣기 -->
     	<FlexBox alignItems="Start" justifyContent="Center" >
-			<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" sizeBehavior="Responsive" width="1500px" height="500px" >
+			<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" sizeBehavior="Responsive" width="1300px" height="400px" >
 				<GenericTile class="mainImage" 
 					backgroundImage="../image/str1.jpg"
 					frameType="TwoByOne" press="pressOnTileOne" >
@@ -61,49 +84,35 @@
 					</layoutData>
 
 					<HBox alignItems="Center" visible="{= ${onlyImage} ? false : true }">
-						<Image class="sapUiMediumMarginTop sapUiMediumMarginBegin" src="{ProductPicUrl}" width="300px" height="200px" />
-							<!-- <smartForm:GroupElement>
-				<smartMultiInput:SmartMultiInput id="idSmartMultiInput5" textLabel="Categories/Description for /Products('1')" value="{to_Categories/Description}"/>
-			</smartForm:GroupElement> -->
-			
+						<HBox class="sapUiMediumMarginTop sapUiMediumMarginBegin figure">
+							<Image class="ProductImage" src="{ProductPicUrl}" width="300px" height="200px" />
+						</HBox>
 
-							<Panel>
-								<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Name}" />
-								<ComboBox 
-										items="{
-										path: '/Weight' 
-									}"
-									width="100px"
-									visible="{visible}" >
-									<core:Item key="{content}" text="{content}" /> 
-								</ComboBox>
-								<l:VerticalLayout width="100%">
-									<tnt:InfoLabel class="sapUiMediumMarginBegin sapUiTinyMarginBottom" text="재고 있음" colorScheme="7"/>
-									<Text class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_desc" text="{Description}" />
-								</l:VerticalLayout>
+						<Panel>
+							<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Name}" />
+							<ComboBox id='idCombo'
+									items="{
+									path: '/Weight' 
+								}"
 								
-							</Panel>
-							
-							
-							 <!-- <ObjectHeader  class="notoSansfont" title="{Name}" condensed="true" >
-								<ObjectAttribute class="notoSansfont" text="{Description}" objectBindings="visible"/>
-								</ObjectHeader>  -->
-				
-			<!-- <ComboBox
-				items="{
-					path: '/CountriesCollection',
-					sorter: { path: 'text' }
-				}">
-				<core:Item key="{key}" text="{text}" />
-			</ComboBox> -->
-		
-							<!-- </ObjectHeader> -->
-						
-						
+								width="100px"
+								visible="{visible}" 
+								selectionChange="onSelect"
+								selectedKey="{defaultSelectedKey}"
+							>
+								<core:Item key="{content}" text="{content}"  /> 
+							</ComboBox>
+							<HBox>
+								<tnt:InfoLabel class="sapUiMediumMarginBegin sapUiTinyMarginBottom" text="재고 있음" colorScheme="7"/>
+								<tnt:InfoLabel class="sapUiTinyMarginBegin sapUiTinyMarginBottom" text="BEST" colorScheme="3" visible="{Bestvisible}"/>
+								
+							</HBox>
+							<Text class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_desc" text="{Description}" />
+						</Panel>
 					</HBox>
 					<OverflowToolbar design="Solid" class="sapUiTinyMarginBottom sapUiTinyMarginEnd" style="Clear">
 						<ToolbarSpacer />
-						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press="onClick" />
+						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press='onClick(${Code})' />
 					</OverflowToolbar>
 				</VBox>
 			</f:GridListItem>
@@ -130,5 +139,5 @@
 				</f:content>
 			</f:GridListItem> -->
 		</f:GridList>
-     </Page>
+    </Page>
 </mvc:View>

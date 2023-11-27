@@ -1,7 +1,41 @@
 /* Enter your custom styles here */
+#application-test-display-component---Main--idIconTabBar--header-head{
+    display: block;
+}
+
+#__page0-cont{
+    padding-bottom: 150px;
+}
+.figure{
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    display: inline-table;
+}
+
+.ProductImage{
+    -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.ProductImage:hover{
+    -webkit-transform: scale(1.3);
+	transform: scale(1.3);
+}
+
+
+#__filter1{
+    float: right;
+}
+
+#__filter0{
+    float: right;
+}
+
 .mainImage{
     height: 500px !important;
-    width: 1500px !important ;
+    width: 1500px !important;
 }
 .sapMSTWrapper{
     height: 100% !important;
@@ -23,7 +57,7 @@
     font-weight: bold;
 }
 .font_content{
-    font-size: 25px;
+    font-size: 15px;
     font-family: 'Black Han Sans', sans-serif;
     font-weight: bold;
 }

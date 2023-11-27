@@ -3,46 +3,104 @@
 		{
             "Description": "맛과 향의 완벽한 조합, 즐거운 딸기 놀이의 초대! 달콤함이 넘치는 특별한 순간을 경험하세요. 🍓 #싱싱한딸기 #달콤한봄 #딸기로가득한즐거운시간",
             "Name": "딸기",
+            "Code": "MM00000002",
             "ProductPicUrl": "../image/str1.jpg",
-            "visible" : true
+            "visible" : true,
+            "Bestvisible" : true,
+            "defaultSelectedKey" : "3kg"
+
 		},
 		{
             "Description": "건강한 유기농 딸기의 맛과 식감을 그대로 담은 잼",
             "Name": "딸기잼",
+            "Code": "MM00000005",
             "ProductPicUrl": "../image/str2.jpg",
-            "visible" : false
+            "visible" : false,
+            "Bestvisible" : false
+            
 		},
 		{
             "Description": "수분 그득 ~ 아삭한 식감이 일품인 오이",
             "Name": "오이",
+            "Code": "MM00000007",
             "ProductPicUrl": "../image/cucum1.jpg",
-            "visible" : true
+            "visible" : true,
+            "Bestvisible" : false,
+            "defaultSelectedKey" : "3kg"
 		},
 		{
             "Description": "無방부제 無첨가제 아삭아삭 살아있는 식감의 피클",
             "Name": "피클",
+            "Code": "MM000000010",
             "ProductPicUrl": "../image/cucum22.jpg",
-            "visible" : false
+            "visible" : false,
+            "Bestvisible" : false
 		},
 		{
             "Description": "풍부한 과즙을 가지고 있어 언제 먹어도 맛있는 토마토 ",
             "Name": "토마토",
+            "Code": "MM00000012",
             "ProductPicUrl": "../image/tomato1.jpg",
-            "visible" : true
+            "visible" : true,
+            "Bestvisible" : false,
+            "defaultSelectedKey" : "3kg"
 		},
 		{
             "Description": "마법의 조미료 케첩",
             "Name": "케첩",
+            "Code": "MM00000015",
             "ProductPicUrl": "../image/tomato2.jpg",
-            "visible" : false
+            "visible" : false,
+            "Bestvisible" : false
 		}
 	],
       "Weight": [
             {
                  "content" : "3kg"
-                  },
+            },
             {
                   "content" : "5kg"
+            }
+      ],
+      "Cart": [
+                 
+      ],
+      "Price" : [
+            {
+             "Code" : "MM00000002",  
+             "Price": 10000
+            },
+            {
+            "Code" : "MM00000002", 
+            "Price": 30000
+            },
+            {
+            "Code" : "MM00000002",  
+            "Price": 50000
+            },
+            {
+            "Code" : "MM00000002",  
+            "Price": 10000
+            },
+            {
+            "Code" : "MM00000002",  
+            "Price": 30000
+            },
+            {
+            "Code" : "MM00000002", 
+            "Price": 50000
+            },
+            {
+            "Code" : "MM00000002",  
+            "Price": 10000
+            },
+            {
+            "Code" : "MM00000002",  
+            "Price": 30000
+            },
+            {
+            "Code" : "MM00000002", 
+            "Price": 50000
             }
       ]
 }
