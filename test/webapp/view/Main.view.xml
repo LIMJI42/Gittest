@@ -35,7 +35,7 @@
 			<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" sizeBehavior="Responsive" width="1300px" height="400px" >
 				<GenericTile class="mainImage" 
 					backgroundImage="../image/str1.jpg"
-					frameType="TwoByOne" press="pressOnTileOne" >
+					frameType="TwoByOne" press="pressOnTileOne">
 				</GenericTile>
 				<GenericTile class="mainImage" 
 					backgroundImage="../image/str2.jpg"
@@ -65,7 +65,7 @@
 			id="gridList"
 			headerText="상품 목록"
 			mode="None"
-			items="{ path: '/Products' }"
+			items="{ path: 'Main>/Products' }"
 			selectionChange="onSelectionChange"
 			delete="onDelete"
 			class="sapUiResponsiveContentPadding">
@@ -85,14 +85,14 @@
 
 					<HBox alignItems="Center" visible="{= ${onlyImage} ? false : true }">
 						<HBox class="sapUiMediumMarginTop sapUiMediumMarginBegin figure">
-							<Image class="ProductImage" src="{ProductPicUrl}" width="300px" height="200px" />
+							<Image class="ProductImage" src="{Main>ProductPicUrl}" width="300px" height="200px" />
 						</HBox>
 
 						<Panel>
-							<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Name}" />
+							<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Main>Name}" />
 							<ComboBox id='idCombo'
 									items="{
-									path: '/Weight' 
+									path: 'Main>/Weight' 
 								}"
 								
 								width="100px"
@@ -100,19 +100,20 @@
 								selectionChange="onSelect"
 								selectedKey="{defaultSelectedKey}"
 							>
-								<core:Item key="{content}" text="{content}"  /> 
+								<core:Item key="{Main>content}" text="{Main>content}"  /> 
 							</ComboBox>
 							<HBox>
 								<tnt:InfoLabel class="sapUiMediumMarginBegin sapUiTinyMarginBottom" text="재고 있음" colorScheme="7"/>
 								<tnt:InfoLabel class="sapUiTinyMarginBegin sapUiTinyMarginBottom" text="BEST" colorScheme="3" visible="{Bestvisible}"/>
 								
 							</HBox>
-							<Text class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_desc" text="{Description}" />
+							<Text class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_desc" text="{Main>Description}" />
 						</Panel>
 					</HBox>
 					<OverflowToolbar design="Solid" class="sapUiTinyMarginBottom sapUiTinyMarginEnd" style="Clear">
 						<ToolbarSpacer />
-						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press='onClick(${Code})' />
+						<!-- <Text text="{path: '/PriceSet', formatter: '.formatPrice'}" /> -->
+						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press='onClick(${Main>Code})' />
 					</OverflowToolbar>
 				</VBox>
 			</f:GridListItem>

@@ -102,5 +102,14 @@
             "Code" : "MM00000002", 
             "Price": 50000
             }
-      ]
+      ],
+      "ImageSlide1" : "/image/str1.jpg",
+      "ImageSlide2" : "/image/str2.jpg",
+      "ImageSlide3" : "/image/tomato1.jpg",
+      "ImageSlide4" : "/image/tomato2.jpg",
+      "ImageSlide5" : "/image/cucum1.jpg",
+      "ImageSlide6" : "/image/cucum22.jpg"
+
+      
+      
 }

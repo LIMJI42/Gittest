@@ -12,183 +12,64 @@ sap.ui.define([
             onInit: function () {
                 var oModel = new JSONModel();
                 oModel.loadData("../model/products.json");
-                this.getView().setModel(oModel);
+                this.getView().setModel(oModel,'Main');
                 // this.byId("idImage").setSrc(_rootPath + "/image/Image1.jpg");
+
+                var oModel2 = new JSONModel({price: []});
+                this.getView().setModel(oModel2,'pricelist');
 
                 var oWeight = new JSONModel();
                 this.getView().setModel(oWeight, "weight");
             
                 var oCombo = this.getView().byId("idCombo");
-            },
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.getRoute('RouteMain').attachPatternMatched(this._patternMatched, this);
+    
+            }, _patternMatched:function(oEvent){
+               
+              var  oDataModel = this.getView().getModel();
+              var oModel = this.getView().getModel('pricelist')
+                 oDataModel.read("/PriceSet",{
+                  
+                     success: function(oReturn){
+                       oModel.setProperty('/price',oReturn.results)
+                      
+                     }.bind(this)
+                 })}
+                
+                 ,
+    
             onSelect: function(oEvent) {
                 var oWeight = oEvent.getParameters().selectedItem.mProperties.text;
+                
                 var oWmodel = this.getView().getModel('weight');
                 oWmodel.setData(oWeight);
-                debugger;
+              
             },
             onClick: function(code) {
-                // debugger;
-                var oDataModel = this.getView().getModel().oData.Cart;
-                
+                var oWmodel = this.getView().getModel('weight').getData('/');
+                if(oWmodel=='3kg'||oWmodel=='5kg'){
+                   
+                var oDataModel = this.getView().getModel('cart').getProperty('/Cart'); //아무값도 없는 경우엔 []
                 var oPrice = this.getView().getModel().oData.Price;
+                var oPricel = this.getView().getModel('pricelist').getData('/');
+                var oPNum = oPricel.price.find(m => m.ProductNum = code).ProductPrice //해당하는 제품코드의 상품 가격 가져옴
                 var oData = {};
                 var count = 0 ;
                 var success = false;
                 var oWeight = this.getView().byId('idCombo').getSelectedKey();
-                // debugger;
-
-                // JH
-                var sWeight = this.getView().getModel('weight').getData();
-                //
-
-                if(oPrice)
-                {
-                    oPrice = 1000;
-                }
-                switch(code){
-                    case "MM00000002":
-                        //딸기 
-
-                        // JH
-                        switch(sWeight) {
-                            case "3kg":
-
-                            case "5kg":
-                        }
-                        //
-                    case "MM00000003":
-                        //딸기 3kg
-
-                        oData = {
-                            "Code":"MM00000003",
-                            "Name": "딸기 3kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000004":
-                        //딸기 5kg
-
-                        oData = {
-                            "Code":"MM00000004",
-                            "Name": "딸기 5kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000005":
-                        //딸기잼
-                        // if(oDataModel == undefined )
-                        // {
-                        //     count = 1;
-                        // }
-                        // else
-                        // {
-                        //     count = oDataModel.Amount + 1;
-                        // }
-                        
-                        oData = {
-                            "Code":"MM00000005",
-                            "Name": "딸기잼",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000008":
-                        //오이 3kg
-
-                        oData = {
-                            "Code":"MM00000008",
-                            "Name": "오이 3kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000009":
-                        //오이 5kg
-
-                        oData = {
-                            "Code":"MM00000009",
-                            "Name": "오이 5kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000010":
-                        //피클
-
-                        oData = {
-                            "Code":"MM00000010",
-                            "Name": "피클",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                            
-                        break;
-                    case "MM00000013":
-                        //토마토 3kg
-
-                        oData = {
-                            "Code":"MM00000013",
-                            "Name": "토마토 3kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000014":
-                        //토마토 5kg
-
-                        oData = {
-                            "Code":"MM00000014",
-                            "Name": "토마토 5kg",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                        break;
-                    case "MM00000015":
-                        //케첩
-
-                        oData = {
-                            "Code":"MM00000015",
-                            "Name": "케첩",
-                            "Amount": 1,
-                            "Price": oPrice * 1
-                        };
-                        oDataModel.push(oData);
-
-                        success = true;
-                            
-                        break;
-
-                }
-                this.getView().getModel().setData(oDataModel);
-                var oModel = new sap.ui.model.json.JSONModel(oDataModel,"Cart");
-                sap.ui.getCore().setModel(oModel,"Cart");
-                debugger;
+                
+               var cart = {
+                            'ProductCod':code,
+                            'Price':oPNum
+               }     
+                oDataModel.push(cart);
+               var oModel = this.getView().getModel('cart');
+                oModel.setProperty('cart',oDataModel)
+                // this.getView().getModel().setData(cart);
+                // var oModel = new sap.ui.model.json.JSONModel(oDataModel,"Cart");
+                // sap.ui.getCore().setModel(oModel,"Cart");
+               success=true;
 
                 if(success)
                 {
@@ -196,10 +77,13 @@ sap.ui.define([
                         width: "20em"
                     });
                 }
-                
-                this.onInit();
+              debugger;  
+                // this.onInit();
+            }else{ sap.m.MessageToast.show("무게를 선택해주세요.", {
+    width: "20em"
+});
 
-            },
+            }},
             onFilterSelect: function(oEvent){
                 //해당하는 obj의 order_num 필요
                     var oOrdNM=oEvent.getParameters().listItem.mAggregations.cells[1].mProperties.text;
@@ -219,6 +103,14 @@ sap.ui.define([
                    
                 } 
     
+            },
+            formatPrice: function(oValue){
+                debugger;
+
+            },
+            fnImageSet : function(path) {
+                return _rootPath + path;
             }
+
         });
     });

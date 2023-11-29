@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: test
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://saphana01.konyang.ac.kr:8080/
+          client: "400"
+        app:
+          name: Z03SE_HOME
+          description: Home
+          package: $tmp
+          transport: "KYHK900100"
+        exclude:
+          - /test/
