@@ -34,6 +34,7 @@
 							nextStep="CreditCardStep"
 							title="상품 목록 확인"
 							icon="sap-icon://customer"
+							width="auto"
                             >
 							<ObjectHeader
 								title="Total"
@@ -93,15 +94,15 @@
 								<layout:Grid
 									defaultSpan="L6 M6 S10"
 									>
-									<Label text="고객 ID" design="Bold"/>
-									<Label text="06110702027218"/>
+									<Text text="고객 ID" />
+									<Label text="0611"/>
 									<Label text="고객 이름" design="Bold"/>
 									<Label text="홍길동"/>
 									<!-- <ToolbarSpacer>
 									</ToolbarSpacer> -->
 									<Label text="고객 전화번호" design="Bold"/>
-									<Label text="06110702027218"/>
-									<Label text="고객 주소" design="Bold"/>
+									<Text text="06110702027218"/>
+									<Text text="고객 주소" />
 									<Label text="+65-6224-2622"/>
 									<Label text="Bank Email Address" design="Bold"/>
 									<Label text="customerservice@citybank.com"/>
@@ -256,8 +257,10 @@
 				<footer>
 					<Bar>
 						<contentRight>
-							<Button text="Submit" press="handleWizardSubmit"/>
-							<Button text="Cancel" press="handleWizardCancel"/>
+							<!-- <Button text="Submit" press="handleWizardSubmit"/>
+							<Button text="Cancel" press="handleWizardCancel"/> -->
+						<Button type="Accept" text="결제하기" width="150px" press="handleWizardSubmit"/>
+						<Button type="Reject" text="취소하기" width="150px" press="handleWizardCancel"/>
 						</contentRight>
 					</Bar>
 				</footer>

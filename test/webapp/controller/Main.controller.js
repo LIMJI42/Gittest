@@ -26,14 +26,14 @@ sap.ui.define([
                 oRouter.getRoute('RouteMain').attachPatternMatched(this._patternMatched, this);
     
             }, _patternMatched:function(oEvent){
-               
+                
               var  oDataModel = this.getView().getModel();
               var oModel = this.getView().getModel('pricelist')
                  oDataModel.read("/PriceSet",{
                   
                      success: function(oReturn){
                        oModel.setProperty('/price',oReturn.results)
-                      
+                       debugger;
                      }.bind(this)
                  })}
                 
@@ -47,6 +47,7 @@ sap.ui.define([
               
             },
             onClick: function(code) {
+                
                 var oWmodel = this.getView().getModel('weight').getData('/');
                 if(oWmodel=='3kg'||oWmodel=='5kg'){
                    
