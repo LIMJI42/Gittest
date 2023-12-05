@@ -73,6 +73,9 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "cart" : {
+        "type": "sap.ui.model.json.JSONModel"
       }
     },
     "resources": {
@@ -102,7 +105,7 @@
         },
         {
           "name": "RouteDetail",
-          "pattern": "Detail/",      
+          "pattern": "Detail/{CustID}",      
           "target": [
             "TargetDetail"
           ]

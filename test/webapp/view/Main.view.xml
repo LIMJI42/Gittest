@@ -34,27 +34,46 @@
     	<FlexBox alignItems="Start" justifyContent="Center" >
 			<SlideTile class="sapUiTinyMarginBegin sapUiTinyMarginTop" sizeBehavior="Responsive" width="1300px" height="400px" >
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/str1.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide1',
+										formatter : '.fnImageSet'
+								}" 
+					id="idImageSlide1"
 					frameType="TwoByOne" press="pressOnTileOne">
 				</GenericTile>
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/str2.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide2',
+										formatter : '.fnImageSet'
+								}"  id="idImageSlide2"
 					frameType="TwoByOne" press="pressOnTileTwo">
 				</GenericTile>
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/cucum1.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide3',
+										formatter : '.fnImageSet'
+								}"  id="idImageSlide3"
 					frameType="TwoByOne" press="pressOnTileTwo">
 				</GenericTile>
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/cucum22.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide4',
+										formatter : '.fnImageSet'
+								}"  id="idImageSlide4"
 					frameType="TwoByOne" press="pressOnTileTwo">
 				</GenericTile>
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/tomato1.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide5',
+										formatter : '.fnImageSet'
+								}"  id="idImageSlide5"
 					frameType="TwoByOne" press="pressOnTileTwo">
 				</GenericTile>
 				<GenericTile class="mainImage" 
-					backgroundImage="../image/tomato2.jpg"
+					backgroundImage="{ 
+										path : 'Main>ImageSlide6',
+										formatter : '.fnImageSet'
+								}"  id="idImageSlide6"
 					frameType="TwoByOne" press="pressOnTileTwo">
 				</GenericTile>
 			</SlideTile>
@@ -75,7 +94,7 @@
 
 			<f:GridListItem>
 				<f:layoutData>
-					<grid:ResponsiveColumnItemLayoutData  columns="4" rows="1" />
+					<grid:ResponsiveColumnItemLayoutData  columns="6" rows="1" />
 				</f:layoutData>
 				
 				<VBox height="100%" justifyContent="SpaceBetween">
@@ -85,20 +104,26 @@
 
 					<HBox alignItems="Center" visible="{= ${onlyImage} ? false : true }">
 						<HBox class="sapUiMediumMarginTop sapUiMediumMarginBegin figure">
-							<Image class="ProductImage" src="{Main>ProductPicUrl}" width="300px" height="200px" />
+							<Image class="ProductImage" 
+								src="{ 
+										path : 'Main>ProductPicUrl',
+										formatter : '.fnImageSet'
+								}"
+								width="300px" 
+								height="200px" />
 						</HBox>
 
 						<Panel>
-							<Title class="sapUiMediumMarginBegin sapUiMediumMarginEnd font_title" text="{Main>Name}" />
+							<Title class="sapUiMediumMarginBegin sapUiSmallMarginEnd font_title" text="{Main>Name}" />
 							<ComboBox id='idCombo'
 									items="{
 									path: 'Main>/Weight' 
 								}"
 								
 								width="100px"
-								visible="{visible}" 
+								visible="{Main>visible}" 
 								selectionChange="onSelect"
-								selectedKey="{defaultSelectedKey}"
+								selectedKey="{Main>defaultSelectedKey}"
 							>
 								<core:Item key="{Main>content}" text="{Main>content}"  /> 
 							</ComboBox>
@@ -113,7 +138,11 @@
 					<OverflowToolbar design="Solid" class="sapUiTinyMarginBottom sapUiTinyMarginEnd" style="Clear">
 						<ToolbarSpacer />
 						<!-- <Text text="{path: '/PriceSet', formatter: '.formatPrice'}" /> -->
-						<Button icon="sap-icon://cart-full" type="Accept" text="장바구니 담기" press='onClick(${Main>Code})' />
+						<Button 
+							icon="sap-icon://cart-full" 
+							type="Accept" 
+							text="장바구니 담기" 
+							press='onClick(${Main>Code}, ${Main>visible}, ${Main>defaultSelectedKey})' />
 					</OverflowToolbar>
 				</VBox>
 			</f:GridListItem>
