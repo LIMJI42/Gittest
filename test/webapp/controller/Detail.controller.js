@@ -106,6 +106,7 @@ sap.ui.define([
             },
             calcTotal: function () {
                 var data = this.getOwnerComponent().getModel('cart').getProperty("/Cart");
+                debugger;
                
                 if (data) {
                     var total = data.reduce(function (prev, current) {
@@ -143,6 +144,7 @@ sap.ui.define([
             },
     
             goToPaymentStep: function () {
+                debugger;
                 var selectedKey = this.model.getProperty("/selectedPayment");
     
                 switch (selectedKey) {
@@ -160,6 +162,7 @@ sap.ui.define([
             },
     
             setPaymentMethod: function () {
+                debugger;
                 this.setDiscardableProperty({
                     message: "Are you sure you want to change the payment type ? This will discard your progress.",
                     discardStep: this.byId("PaymentTypeStep"),
@@ -169,6 +172,7 @@ sap.ui.define([
             },
 
             setDifferentDeliveryAddress: function () {
+                debugger;
                 this.setDiscardableProperty({
                     message: "Are you sure you want to change the delivery address ? This will discard your progress",
                     discardStep: this.byId("BillingStep"),
@@ -178,6 +182,7 @@ sap.ui.define([
             },
     
             setDiscardableProperty: function (params) {
+                debugger;
                 if (this._wizard.getProgressStep() !== params.discardStep) {
                     MessageBox.warning(params.message, {
                         actions: [MessageBox.Action.YES, MessageBox.Action.NO],
@@ -196,6 +201,7 @@ sap.ui.define([
             },
     
             billingAddressComplete: function () {
+                debugger;
                 if (this.model.getProperty("/differentDeliveryAddress")) {
                     this.byId("BillingStep").setNextStep(this.getView().byId("DeliveryAddressStep"));
                 } else {
@@ -208,6 +214,7 @@ sap.ui.define([
             },
     
             handleWizardSubmit: function () {
+                debugger;
                 this._handleMessageBoxOpen("구매하시겠습니까?", "confirm");
             },
     
@@ -216,6 +223,7 @@ sap.ui.define([
             },
     
             checkCreditCardStep: function () {
+                debugger;
                 var cardName = this.model.getProperty("/CreditCard/Name") || "";
                 if (cardName.length < 3) {
                     this._wizard.invalidateStep(this.byId("CreditCardStep"));
@@ -225,6 +233,7 @@ sap.ui.define([
             },
     
             checkCashOnDeliveryStep: function () {
+                debugger;
                 var firstName = this.model.getProperty("/CashOnDelivery/FirstName") || "";
                 if (firstName.length < 3) {
                     this._wizard.invalidateStep(this.byId("CashOnDeliveryStep"));
@@ -234,6 +243,7 @@ sap.ui.define([
             },
     
             checkBillingStep: function () {
+                debugger;
                 var address = this.model.getProperty("/BillingAddress/Address") || "";
                 var city = this.model.getProperty("/BillingAddress/City") || "";
                 var zipCode = this.model.getProperty("/BillingAddress/ZipCode") || "";

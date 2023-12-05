@@ -48,19 +48,8 @@ sap.ui.define([
                 let oComponentData = this.getOwnerComponent().getComponentData();
                 if(!oComponentData.startupParameters.CustID) return;
                 oModel.CustID = decodeURIComponent(oComponentData.startupParameters.CustID[0]);
-                // if(oComponentData && oComponentData.startupParameters && oComponentData.startupParameters.CustID){
-                //     let CustIDstr = decodeURIComponent(oComponentData.startupParameters.CustID[0]).CustID;
-                //     console.log(CustIDstr);
-                //     debugger;
-                // }
-            
-                // console.log(oComponentData);
-                // debugger;
-                // let oQueryParameters = oComponentData.startupParameters.oParameters.oQueryParameters;
+
                 this.getView().getModel('Main').setProperty('/User', oModel.CustID);
-                // this.getView().setModel(oModel,'CustID');
-
-
             },
             setSlideImagePath : function() {
              
@@ -139,7 +128,7 @@ sap.ui.define([
                 });
             },
 
-            onFilterSelect: function(oEvent){
+            onFilterSelect2: function(oEvent){
                 //해당하는 obj의 order_num 필요
                     var oOrdNM=oEvent.getParameters().listItem.mAggregations.cells[1].mProperties.text;
                     var oRouter = this.getOwnerComponent().getRouter(); 
@@ -150,16 +139,58 @@ sap.ui.define([
             onFilterSelect: function (oEvent) {
                 var skey = oEvent.getParameter("key");
                 var oModel = this.getView().getModel('Main');
-                var User = oModel.getProperty('/User') || []; //아무값도 없는 경우엔 []
+                var User = oModel.oData.User || "x"; //아무값도 없는 경우엔 ""
                     
+                debugger;
+                if(User == "" || User == "x")
+                {
+                    //로그인 정보 없으면 로그인하러가자
+                    const oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+
+                    const hash =
+                    (oCrossAppNavigator &&
+                        oCrossAppNavigator.hrefForExternal({
+                        target: {
+                            semanticObject: "Z03SE_Login",
+                            action: "display",
+                        }
+                        })) ||
+                    "";
+            
+                    oCrossAppNavigator.toExternal({
+                        target: {shellHash: hash}
+                    });
+
+                    return false;
+                }
+
                 if (skey == "Cart") {
                     
-                    var oRouter = this.getOwnerComponent().getRouter(); 
-                    oRouter.navTo('RouteDetail',{
-                        CustID : Users // 필수 파라미터     
-                    });
+                    var oRouter = this.getOwnerComponent().getRouter();
+
                     debugger;
-                } else if (skey === "MyPage") { 
+                    oRouter.navTo('RouteDetail',{
+                        CustID : User // 필수 파라미터     
+                    });
+                  
+                } 
+                else if (skey == "Mypage") { 
+                    const oCrossAppNavigator = sap.ushell.Container.getService("CrossApplicationNavigation");
+        
+                    const hash =
+                    (oCrossAppNavigator &&
+                        oCrossAppNavigator.hrefForExternal({
+                        target: {
+                            semanticObject: "z03se_sd_f1",
+                            action: "display",
+                        },
+                        params: {CustID: User},
+                        })) ||
+                    "";
+            
+                    oCrossAppNavigator.toExternal({
+                        target: {shellHash: hash}
+                    });
                 } 
             },
             formatPrice: function(oValue){

@@ -1,4 +1,8 @@
 /* Enter your custom styles here */
+#application-Z03SE_HOME-display-component---Main--idIconTabBar-content{
+    padding: 0px;
+}
+
 #application-test-display-component---Main--idIconTabBar--header-head{
     display: block;
 }
